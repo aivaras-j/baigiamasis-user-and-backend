@@ -21,6 +21,10 @@
         <p th:text="${article.id}"></p>
         <span th:text="${article.title}"></span>
     </a>
+    <form th:action="@{/news/article/{id}(id=${article.id})}" th:method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <button class="btn btn-danger">Delete</button>
+    </form>
 
 </div>
 <a href="/news/article/new">Create New Article</a>

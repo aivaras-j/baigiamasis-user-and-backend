@@ -11,6 +11,7 @@
 </div>
 <img th:src="${article.imageUrl}">
 <div class="blog-text" th:text="${article.text}"></div>
+
 <p>
     <a th:href="@{/news/article/{id}/edit(id=${article.id})}">Redaguoti</a>
 </p>

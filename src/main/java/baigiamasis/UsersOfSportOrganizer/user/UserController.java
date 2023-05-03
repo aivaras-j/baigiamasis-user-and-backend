@@ -321,6 +321,15 @@ public class UserController {
         return "redirect:/news";
     }
 
+    @PostMapping(value = "/news/article/{id}", params = "_method=DELETE")
+    public String deleteArticle(@PathVariable("id") int id) {
+        restTemplate.delete("http://localhost:8081/news/article/{id}", id);
+        logger.info("Article deleted with ID: {}", id);
+        return "redirect:/news";
+    }
+
+
+
 
 
 //    private List<SportType> getSportTypes() {
