@@ -15,10 +15,8 @@ public class Comment {
     @NonNull
     private int id;
 
-
     @NonNull
     private String name;
-
 
     @NonNull
     private String content;
@@ -28,27 +26,4 @@ public class Comment {
         this.content = content;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 }

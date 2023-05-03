@@ -13,7 +13,7 @@
     <li><a th:href="@{/news}" class="nav-link px-2 link-secondary"><p data-th-text="#{header.home}"></p></a></li>
 <!--    <li><a th:href="@{/contact}" class="nav-link px-2 link-dark"><p data-th-text="#{header.contact}"></p></a></li>-->
 <!--    <li><a th:href="@{/blogs/user/{id}/profile}" sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark"><p data-th-text="#{header.profile}"></p></a></li>-->
-<!--    <li><a th:href="@{/user/logout}" sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark"><p data-th-text="#{header.logout}"></p></a></li>-->
+    <li><a th:href="@{/user/logout}" sec:authorize="isAuthenticated()" class="nav-link px-2 link-dark"><p data-th-text="#{header.logout}"></p></a></li>
   </ul>
   <div class="col-md-3 div-login btn-group">
     <form action="/user/login" method="GET" class="login-sign">
@@ -25,9 +25,9 @@
   </div>
   <div class="language">
     <ul class="language-bar list-unstyled">
-      <li><a title="Lietuvių"  data-th-href="@{blogs?lang=lt}">
+      <li><a title="Lietuvių"  th:href="@{news?lang=lt}">
         <img src="https://sandas.lt/wp-content/plugins/qtranslate-x/flags/lt.png" alt="Lietuvių">LT</a></li>
-      <li><a title="English" data-th-href="@{blogs?lang=en}">
+      <li><a title="English" th:href="@{news?lang=en}">
         <img src="https://sandas.lt/wp-content/plugins/qtranslate-x/flags/gb.png" alt="English">EN</a></li>
     </ul>
   </div>

@@ -14,6 +14,10 @@
     <header th:replace="~{partials/header}"></header>
 </div>
 
+<div sec:authorize="isAuthenticated()">
+    <h1>Welcome, </span><span th:text="${#strings.replace(#strings.replace(#authentication.getAuthorities(), '[', ''), ']', '')}"></span> <span sec:authentication="name"></span>!
+    </h1>
+</div>
 
 <img src="https://as1.ftcdn.net/v2/jpg/01/93/12/84/1000_F_193128467_rINpXuCIdYW1n3m9eovl1tIEvw6B0Wth.jpg" class="img">
 <div th:each="article : ${articles}">

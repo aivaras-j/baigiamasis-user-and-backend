@@ -7,8 +7,7 @@ import java.util.List;
 
 public class ArticleWithComments {
 
-    @NonNull
-    private int id;
+
     private Article article;
     private List<Comment> comments;
 
@@ -24,13 +23,6 @@ public class ArticleWithComments {
         return article;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
 
     public void setArticle(Article article) {
         this.article = article;

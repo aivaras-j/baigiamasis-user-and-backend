@@ -1,5 +1,6 @@
 package baigiamasis.UsersOfSportOrganizer.SportType;
 
+import baigiamasis.UsersOfSportOrganizer.Comment.Comment;
 import baigiamasis.UsersOfSportOrganizer.Event.Event;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,17 +18,9 @@ public class SportType {
     @NonNull
     private int id;
 
-
     @NonNull
-
     private String name;
 
-    private List<Event> events = new ArrayList<>();
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-
+    private List<Event> events;
 
 }
