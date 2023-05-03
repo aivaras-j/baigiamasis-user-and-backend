@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>Tvarkarastis</h1>
+<div>
+  <p>Name: <span th:text="${sportType.name}"></span></p>
+  <p>Events:</p>
+  <ul>
+    <li th:each="event : ${sportType.events}">
+      <p>Event Name: <span th:text="${event.name}"></span></p>
+      <p>Place: <span th:text="${event.place}"></span></p>
+      <p>Teams: <span th:text="${event.team}"></span></p>
+    </li>
+  </ul>
+</div>
+<a th:href="@{/news/sportType/{id}/newEvent (id=${sportType.id})}">Create New Event</a>
+<a th:href="@{/news}">
+  <div>BACK</div>
+</a>
+<!--<a th:href="@{/news/sportType/{id}/newEvent(id=${sportType.id})}">Create New Event</a>-->
+</body>
+</html>
+

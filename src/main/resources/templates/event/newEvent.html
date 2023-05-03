@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <meta charset="UTF-8">
+  <title>New Event</title>
+</head>
+<body>
+<h1>New Event</h1>
+<form class="input-form" action="#" th:action="@{/news/sportType/newEvent}" th:object="${event}" method="post">
+  <input type="hidden" th:field="*{id}" />
+  <p>Title: <input type="text" th:field="*{name}" class="create-input"/></p>
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-color">Name error</div>
+  <p>Teams: <input type="text" th:field="*{team}" class="create-input"/></p>
+  <p>Place: <input type="text" th:field="*{place}" class="create-input"/></p>
+
+  <p>
+    <input type="submit" value="Submit"/>
+    <input type="reset" value="Reset"/>
+  </p>
+
+  <a th:href="@{/news}">
+    <div>BACK</div>
+  </a>
+</form>
+
+</body>
+</html>

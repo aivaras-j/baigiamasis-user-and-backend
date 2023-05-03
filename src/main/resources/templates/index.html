@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8">
+    <title>👋🏼</title>
+  </head>
+  <body>
+    <div style="max-width: 450px; margin: 0 auto;">
+      <h1>Login page 🔑</h1>
+      <form th:action="@{/index}" method="POST">
+        <div th:if="${param.error}">
+          <div style="color: red">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
+        </div>
+        <table>
+          <tr>
+            <td style="height:30px">Username:</td>
+            <td><input type="text" name="username" required /></td>
+          </tr>
+          <tr>
+            <td style="padding-top: 10px; height:30px">Password:</td>
+            <td><input type="password" name="password" required /></td>
+          </tr>
+          <tr>
+            <td style="padding-top: 10px">
+              <input type="submit" value="Login"/>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <form action="/signup" method="GET">
+        <button type="submit" class="btn btn-primary login" th:href="@{/signup}"><p>Signup</p></button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <meta charset="UTF-8">
+  <title>New blog</title>
+</head>
+<body>
+<h1>New Article</h1>
+<form class="input-form" action="#" th:action="@{/news/article/new}" th:object="${article}" method="post">
+  <p>Title: <input type="text" th:field="*{title}" class="create-input"/></p>
+  <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-color">Title error</div>
+
+  <p>ImageUrl: <input type="text" th:field="*{imageUrl}" class="create-input"/></p>
+  <div th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="text-color">ImageUrl error</div>
+
+  <p>Text:<textarea name="content" type="text" th:field="*{text}" class="text-input" required></textarea></p>
+  <div th:if="${#fields.hasErrors('text')}" th:errors="*{text}" class="text-color">Text error</div>
+  <p>
+    <input type="submit" value="Submit"/>
+    <input type="reset" value="Reset"/>
+  </p>
+  <a th:href="@{/news}">
+    <div>BACK</div>
+  </a>
+</form>
+
+</body>
+</html>

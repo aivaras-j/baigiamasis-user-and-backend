@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+</head>
+<body>
+<div>
+    <h2 th:text="${article.title}"></h2>
+</div>
+<img th:src="${article.imageUrl}">
+<div class="blog-text" th:text="${article.text}"></div>
+<p>
+    <a th:href="@{/news/article/{id}/edit(id=${article.id})}">Redaguoti</a>
+</p>
+<p></p>
+<a th:href="@{/news}">
+    <div>BACK</div>
+</a>
+<p></p>
+<a th:href="@{/news/article/{id}/comment (id=${article.id})}">Comment</a>
+<h2>Comments</h2>
+
+<div class="container comments-section">
+    <ul>
+        <li class="comment-li" th:each="comment : ${articleWithComments.comments}">
+            <div class="comment-container" th:id="${comment.id}">
+                <div class="comment-owner-details">
+                    <h6 class="text-muted" th:text="${comment.id}"></h6>
+                    <h6 class="text-muted" th:text="${comment.name}"></h6>
+                    <h6 class="text-muted" th:text="${comment.content}"></h6>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

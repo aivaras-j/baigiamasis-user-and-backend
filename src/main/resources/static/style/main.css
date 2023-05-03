@@ -1,0 +1,95 @@
+body {
+background-color: yellow;
+   font-size: larger;
+    text-align: center;
+}
+
+.img {
+    width: 500px;
+    height: 300px;
+    padding: 30px;
+}
+
+.img1 {
+    width: 500px;
+    height: 300px;
+    padding: 30px;
+
+}
+.blog-text {
+    width: 700px;
+    margin: 0 auto;
+    font-weight: bold;
+    color: green;
+    text-align: justify;
+    margin: 0 auto;
+    font-family: "Times New Roman";
+}
+
+.text-color {
+color: red;
+
+}
+.input-form {
+width: 500px;
+height: 650px;
+padding: 30px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 0 auto;
+}
+
+
+.create-input {
+    width: 500px;
+    height: 40px;
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
+
+.text-input {
+    width: 500px;
+    height: 300px;
+    font-family: "Times New Roman";
+    font-size: 20px;
+}
+.footer-text {
+    color: black
+}
+.container {
+    width: 1100px;
+}
+.div-login {
+width: 360px;
+}
+
+.login-sign {
+width: 230px;
+}
+.login {
+    width: 100px;
+    height: 40px;
+}
+.language {
+    width: 70px;
+}
+.contact-conteiner {
+     width: 500px;
+
+}
+.contact {
+     width: 250px;
+}
+
+
+
+.form-error {
+    border: 2px solid red;
+}
+
+.comment-form-input {
+    margin-bottom: 10px;
+}
+
