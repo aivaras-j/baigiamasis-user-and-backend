@@ -33,6 +33,10 @@
                     <h6 class="text-muted" th:text="${comment.content}"></h6>
                 </div>
             </div>
+            <form th:action="@{/news/article/{id}/commentDelete(id=${article.id})}" th:method="post">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button class="btn btn-danger">Delete</button>
+            </form>
         </li>
     </ul>
 </div>

@@ -1,6 +1,5 @@
 package baigiamasis.UsersOfSportOrganizer.Article;
 
-import baigiamasis.UsersOfSportOrganizer.Article.Article;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;

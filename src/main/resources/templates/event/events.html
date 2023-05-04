@@ -14,6 +14,10 @@
       <p>Event Name: <span th:text="${event.name}"></span></p>
       <p>Place: <span th:text="${event.place}"></span></p>
       <p>Teams: <span th:text="${event.team}"></span></p>
+      <form th:action="@{/news/sportType/{id}(id=${sportType.id})}" th:method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <button class="btn btn-danger">Delete</button>
+      </form>
     </li>
   </ul>
 </div>

@@ -1,6 +1,5 @@
 package baigiamasis.UsersOfSportOrganizer.Event;
 
-import baigiamasis.UsersOfSportOrganizer.SportType.SportType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -23,9 +22,10 @@ public class Event {
     @NonNull
     private String team;
 
-    private SportType sportType;
 
-    public void setSportType(SportType sportType) {
-        this.sportType = sportType;
+    public Event(@NonNull String name, @NonNull String place, @NonNull String team) {
+        this.name = name;
+        this.place = place;
+        this.team = team;
     }
 }

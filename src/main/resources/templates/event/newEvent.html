@@ -7,8 +7,7 @@
 </head>
 <body>
 <h1>New Event</h1>
-<form class="input-form" action="#" th:action="@{/news/sportType/newEvent}" th:object="${event}" method="post">
-  <input type="hidden" th:field="*{id}" />
+<form class="input-form" th:action="@{/news/sportType/{id}/newEvent(id=${sportType.id})}" th:object="${event}" method="POST">
   <p>Title: <input type="text" th:field="*{name}" class="create-input"/></p>
   <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-color">Name error</div>
   <p>Teams: <input type="text" th:field="*{team}" class="create-input"/></p>

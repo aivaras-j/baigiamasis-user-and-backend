@@ -1,11 +1,6 @@
 package baigiamasis.UsersOfSportOrganizer.Article;
 
-//import baigiamasis.UsersOfSportOrganizer.Comment.Comment;
 import baigiamasis.UsersOfSportOrganizer.Comment.Comment;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -17,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Article {
+
     @NonNull
     private int id;
 

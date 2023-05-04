@@ -1,6 +1,5 @@
 package baigiamasis.UsersOfSportOrganizer.Comment;
 
-import baigiamasis.UsersOfSportOrganizer.Event.Event;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

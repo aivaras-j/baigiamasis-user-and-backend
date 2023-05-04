@@ -1,12 +1,10 @@
 package baigiamasis.UsersOfSportOrganizer.Article;
 
 import baigiamasis.UsersOfSportOrganizer.Comment.Comment;
-import lombok.NonNull;
 
 import java.util.List;
 
 public class ArticleWithComments {
-
 
     private Article article;
     private List<Comment> comments;
