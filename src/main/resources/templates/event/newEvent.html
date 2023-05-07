@@ -4,13 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <title>New Event</title>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+  <link th:href="@{/style/main.css}" rel="stylesheet" type="text/css"/>
 </head>
-<body>
-<h1>New Event</h1>
+<body class="transition-background">
+<div class="container">
+  <header th:replace="~{partials/header}"></header>
+</div>
+<h1>Naujas renginys</h1>
 <form class="input-form" th:action="@{/news/sportType/{id}/newEvent(id=${sportType.id})}" th:object="${event}" method="POST">
-  <p>Title: <input type="text" th:field="*{name}" class="create-input"/></p>
-  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-color">Name error</div>
-  <p>Teams: <input type="text" th:field="*{team}" class="create-input"/></p>
+  <div>
+    <label>Renginio tipas:</label>
+    <select name="name" th:field="*{name}">
+      <option value="Varžybos">Varžybos</option>
+      <option value="Draugiškos varžybos">Draugiškos varžybos</option>
+      <option value="Varžybos skirtos labdarai">Varžybos skirtos labdarai</option>
+    </select>
+  </div>
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-color">Error</div>
+  <p>Komandos: <input type="text" th:field="*{team1}" class="create-input"/> prieš <input type="text" th:field="*{team2}" class="create-input"/></p>
   <p>Place: <input type="text" th:field="*{place}" class="create-input"/></p>
 
   <p>
@@ -22,6 +35,8 @@
     <div>BACK</div>
   </a>
 </form>
-
+<div class="container my-5">
+  <footer th:replace="~{partials/footer}"></footer>
+</div>
 </body>
 </html>

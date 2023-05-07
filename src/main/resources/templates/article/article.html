@@ -4,8 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Article</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <link th:href="@{/style/main.css}" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body class="transition-background">
+<div class="container">
+    <header th:replace="~{partials/header}"></header>
+</div>
 <div>
     <h2 th:text="${article.title}"></h2>
 </div>
@@ -13,7 +19,7 @@
 <div class="blog-text" th:text="${article.text}"></div>
 
 <p>
-    <a th:href="@{/news/article/{id}/edit(id=${article.id})}">Redaguoti</a>
+    <a th:href="@{/news/article/{id}/edit(id=${article.id})}" sec:authorize="hasRole('ADMIN')">Redaguoti</a>
 </p>
 <p></p>
 <a th:href="@{/news}">
@@ -28,18 +34,19 @@
         <li class="comment-li" th:each="comment : ${articleWithComments.comments}">
             <div class="comment-container" th:id="${comment.id}">
                 <div class="comment-owner-details">
-                    <h6 class="text-muted" th:text="${comment.id}"></h6>
                     <h6 class="text-muted" th:text="${comment.name}"></h6>
                     <h6 class="text-muted" th:text="${comment.content}"></h6>
                 </div>
             </div>
-            <form th:action="@{/news/article/{id}/commentDelete(id=${article.id})}" th:method="post">
+            <form th:action="@{/news/article/{id}/commentDelete(id=${article.id})}" th:method="post" sec:authorize="hasRole('ADMIN')">
                 <input type="hidden" name="_method" value="DELETE" />
                 <button class="btn btn-danger">Delete</button>
             </form>
         </li>
     </ul>
 </div>
-
+<div class="container my-5">
+    <footer th:replace="~{partials/footer}"></footer>
+</div>
 </body>
 </html>

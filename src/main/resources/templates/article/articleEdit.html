@@ -1,33 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-  <meta charset="UTF-8">
-  <title>Article edit</title>
-  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-  <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
-  <link th:href="@{/style/main.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Edit Article</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <link th:href="@{/style/main.css}" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body class="transition-background">
+<div class="container">
+    <header th:replace="~{partials/header}"></header>
+</div>
 
 <h1>Edit Article</h1>
 <form class="input-form" th:action="@{/news/article/{id}/edit (id=${article.id})}" th:object="${article}" method="POST">
-  <p>Title: <input type="text" th:field="*{title}" class="create-input"/></p>
-  <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-color">Title error</div>
+    <p>Title: <input type="text" th:field="*{title}" class="create-input"/></p>
+    <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-color">Title error</div>
 
-  <p>ImageUrl: <input type="text" th:field="*{imageUrl}" class="create-input"/></p>
-  <div th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="text-color">ImageUrl error</div>
+    <p>ImageUrl: <input type="text" th:field="*{imageUrl}" class="create-input"/></p>
+    <div th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="text-color">ImageUrl error</div>
 
-  <p>Text:<textarea name="content" type="text" th:field="*{text}" class="text-input" required></textarea></p>
-  <div th:if="${#fields.hasErrors('text')}" th:errors="*{text}" class="text-color">Text error</div>
-  <p>
-    <button type="submit" class="btn btn-secondary" value="submit">Submit</button>
-    <button type="reset" class="btn btn-secondary" value="reset">Reset?</button>
-  </p>
+    <p>Text:<textarea name="content" type="text" th:field="*{text}" class="text-input" required></textarea></p>
+    <div th:if="${#fields.hasErrors('text')}" th:errors="*{text}" class="text-color">Text error</div>
+    <p>
+        <button type="submit" class="btn btn-secondary  mx-2" value="submit">Submit</button>
+        <button type="reset" class="btn btn-secondary" value="reset">Reset?</button>
+
 </form>
-<a th:href="@{/news}">
-  <div>BACK</div>
+<a th:href="@{/news/article/{id} (id=${article.id})}">
+    <div>BACK</div>
 </a>
-
+<div class="container my-5">
+    <footer th:replace="~{partials/footer}"></footer>
+</div>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
-    <title>Comment</title>
+    <title>Login form</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
     <link th:href="@{/style/main.css}" rel="stylesheet" type="text/css"/>
@@ -12,31 +12,12 @@
 <div class="container">
     <header th:replace="~{partials/header}"></header>
 </div>
-
-<h1>New Comment</h1>
-
-<form class="input-form" th:action="@{/news/article/{id}/comment(id=${article.id})}" th:object="${comment}"
-      method="POST">
-    <p>Name: <input type="text" th:field="*{name}" class="create-input"/></p>
-    <p>Content:<textarea name="content" type="text" th:field="*{content}" class="text-input" required></textarea></p>
-    <p>
-        <input type="submit" value="Submit" class="btn btn-secondary  mx-2"/>
-        <input type="reset" value="Reset" class="btn btn-secondary"/>
-    </p>
-
-</form>
-
-<a th:href="@{/news/article/{id} (id=${article.id})}">
-    <div>BACK</div>
-</a>
+<h1>User Info</h1>
+<p>ID: [[${user.id}]]</p>
+<p>Username: [[${user.username}]]</p>
+<p>Role: [[${user.role}]]</p>
 <div class="container my-5">
     <footer th:replace="~{partials/footer}"></footer>
 </div>
-
 </body>
-
 </html>
-
-
-
-

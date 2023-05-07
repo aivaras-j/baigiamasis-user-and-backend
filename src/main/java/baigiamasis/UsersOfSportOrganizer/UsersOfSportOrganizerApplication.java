@@ -23,73 +23,71 @@ import java.util.Set;
 @SpringBootApplication
 public class UsersOfSportOrganizerApplication implements CommandLineRunner {
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	private final UserRepository userRepository;
-	
-
-	public UsersOfSportOrganizerApplication(UserRepository userRepository) {
-		this.userRepository = userRepository;
-		
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(UsersOfSportOrganizerApplication.class, args);
-	}
-
-	@Bean
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
-
-	@Bean
-	WebClient.Builder webClientBuilder() {
-		return WebClient.builder();
-	}
-
-	@Bean
-	public DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-		authProvider.setUserDetailsService(new CustomUserDetailsService(userRepository));
-		authProvider.setPasswordEncoder(passwordEncoder());
-		return authProvider;
-	}
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-
-	@Bean
-	public UserDetailsService inMemoryUserDetailsService() {
-		UserDetails min = org.springframework.security.core.userdetails.User
-				.withUsername("aa")
-				.password(passwordEncoder().encode("aa"))
-				.roles("USER")
-				.build();
-
-		UserDetails sup = org.springframework.security.core.userdetails.User
-				.withUsername("ss")
-				.password(passwordEncoder().encode("ss"))
-				.roles("USER", "ADMIN")
-				.build();
-
-		return new InMemoryUserDetailsManager(min, sup);
-	}
-
-	@Override
-	public void run(String... args) {
-		Set<User> users = Set.of(
-				new User("user", passwordEncoder().encode("pass"), "USER"),
-				new User("god", passwordEncoder().encode("god"), "ADMIN")
-		);
-		userRepository.saveAll(users);
-		logger.info("Users created: {}", users);
+    private final UserRepository userRepository;
 
 
-	}
+    public UsersOfSportOrganizerApplication(UserRepository userRepository) {
+        this.userRepository = userRepository;
+
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(UsersOfSportOrganizerApplication.class, args);
+    }
+
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+    @Bean
+    WebClient.Builder webClientBuilder() {
+        return WebClient.builder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(new CustomUserDetailsService(userRepository));
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public UserDetailsService inMemoryUserDetailsService() {
+        UserDetails min = org.springframework.security.core.userdetails.User
+                .withUsername("aa")
+                .password(passwordEncoder().encode("aa"))
+                .roles("USER")
+                .build();
+
+        UserDetails sup = org.springframework.security.core.userdetails.User
+                .withUsername("ss")
+                .password(passwordEncoder().encode("ss"))
+                .roles("USER", "ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(min, sup);
+    }
+
+    @Override
+    public void run(String... args) {
+//		Set<User> users = Set.of(
+//				new User("user", passwordEncoder().encode("user"), "USER"),
+//				new User("admin", passwordEncoder().encode("admin"), "ADMIN")
+//		);
+//		userRepository.saveAll(users);
+//		logger.info("Users created: {}", users);
 
 
+    }
 
 
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
@@ -7,39 +6,43 @@
     <title>News</title>
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
     <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
-    <link th:href="@{/style/main.css}" rel="stylesheet"/>
+    <link th:href="@{/style/main.css}" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body class="transition-background">
 <div class="container">
     <header th:replace="~{partials/header}"></header>
 </div>
-
 <div sec:authorize="isAuthenticated()">
-    <h1>Welcome, </span><span th:text="${#strings.replace(#strings.replace(#authentication.getAuthorities(), '[', ''), ']', '')}"></span> <span sec:authentication="name"></span>!
+    <h1>Sveiki, </span>
+        <!--        <span th:text="${#strings.replace(#strings.replace(#authentication.getAuthorities(), '[', ''), ']', '')}"></span>-->
+        <span sec:authentication="name"></span>!
     </h1>
 </div>
-
-<img src="https://as1.ftcdn.net/v2/jpg/01/93/12/84/1000_F_193128467_rINpXuCIdYW1n3m9eovl1tIEvw6B0Wth.jpg" class="img">
-<div th:each="article : ${articles}">
+<p></p>
+<a th:href="@{/news/sportTypes}"><h2>Varžybų tvarkaraštis</h2></a>
+<p></p>
+<p></p>
+<p></p>
+<div class="img-container">
+    <img src="https://as1.ftcdn.net/v2/jpg/01/93/12/84/1000_F_193128467_rINpXuCIdYW1n3m9eovl1tIEvw6B0Wth.jpg" class="img-left">
+    <h2>Sporto naujienos</h2>
+    <img src="https://as1.ftcdn.net/v2/jpg/01/93/12/84/1000_F_193128467_rINpXuCIdYW1n3m9eovl1tIEvw6B0Wth.jpg" class="img-right">
+</div>
+<div th:each="article : ${articles}" class="div-article">
     <a th:href="@{/news/article/{id}(id=${article.id})}">
-        <p th:text="${article.id}"></p>
+        <p><img th:src="${article.imageUrl}" alt="Blog image" class="img1"></p>
         <span th:text="${article.title}"></span>
     </a>
-    <form th:action="@{/news/article/{id}(id=${article.id})}" th:method="post">
-        <input type="hidden" name="_method" value="DELETE" />
+
+    <form th:action="@{/news/article/{id}(id=${article.id})}" th:method="post" sec:authorize="hasRole('ADMIN')">
+        <input type="hidden" name="_method" value="DELETE"/>
         <button class="btn btn-danger">Delete</button>
     </form>
-
 </div>
-<a href="/news/article/new">Create New Article</a>
-<p></p>
-<a th:href="@{/news/sportTypes}">Sport Events</a>
-<p></p>
 
+<a href="/news/article/new" sec:authorize="hasRole('ADMIN')">Create New Article</a>
 <div class="container my-5">
     <footer th:replace="~{partials/footer}"></footer>
-
 </div>
-
 </body>
 </html>

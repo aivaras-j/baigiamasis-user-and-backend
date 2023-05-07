@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-
 import java.util.List;
 
 @Data
@@ -26,6 +25,5 @@ public class Article {
     private String text;
 
     private List<Comment> comments;
-
 
 }

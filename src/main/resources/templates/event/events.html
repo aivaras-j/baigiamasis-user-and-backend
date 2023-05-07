@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Events</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <link th:href="@{/style/main.css}" rel="stylesheet" type="text/css"/>
 </head>
-<body>
-<h1>Tvarkarastis</h1>
-<div>
-  <p>Name: <span th:text="${sportType.name}"></span></p>
-  <p>Events:</p>
-  <ul>
-    <li th:each="event : ${sportType.events}">
-      <p>Event Name: <span th:text="${event.name}"></span></p>
-      <p>Place: <span th:text="${event.place}"></span></p>
-      <p>Teams: <span th:text="${event.team}"></span></p>
-      <form th:action="@{/news/sportType/{id}(id=${sportType.id})}" th:method="post">
-        <input type="hidden" name="_method" value="DELETE" />
-        <button class="btn btn-danger">Delete</button>
-      </form>
-    </li>
-  </ul>
+<body class="transition-background">
+<div class="container">
+    <header th:replace="~{partials/header}"></header>
 </div>
-<a th:href="@{/news/sportType/{id}/newEvent (id=${sportType.id})}">Create New Event</a>
-<a th:href="@{/news}">
-  <div>BACK</div>
+<h1>Tvarkaraštis</h1>
+<div>
+    <h2><span th:text="${sportType.name}"></span></h2>
+    <ul>
+        <li th:each="event : ${sportType.events}">
+            <div class="event-item">
+                <h2>Renginio tipas: <span th:text="${event.name}"></span></h2>
+                <h2>Renginio vieta: <span th:text="${event.place}"></span></h2>
+                <h2>Komandos: <span th:text="${event.team1}"></span> prieš <span th:text="${event.team2}"></span></h2>
+                <form th:action="@{/news/sportType/{id}(id=${sportType.id})}" th:method="post" sec:authorize="hasRole('ADMIN')">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
+<a th:href="@{/news/sportType/{id}/newEvent (id=${sportType.id})} " sec:authorize="hasRole('ADMIN')"> Create New Event</a>
+<a th:href="@{/news/sportType/{id}/newEvent (id=${sportType.id})} " sec:authorize="hasRole('USER')"> Create New Event</a>
+<p></p>
+<p></p>
+<a th:href="@{/news/sportTypes}">
+    <div>BACK</div>
 </a>
-<!--<a th:href="@{/news/sportType/{id}/newEvent(id=${sportType.id})}">Create New Event</a>-->
+<div class="container my-5">
+    <footer th:replace="~{partials/footer}"></footer>
+</div>
 </body>
 </html>
 

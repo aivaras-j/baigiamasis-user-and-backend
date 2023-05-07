@@ -20,12 +20,15 @@ public class Event {
     private String place;
 
     @NonNull
-    private String team;
+    private String team1;
 
+    @NonNull
+    private String team2;
 
-    public Event(@NonNull String name, @NonNull String place, @NonNull String team) {
+    public Event(@NonNull String name, @NonNull String place, @NonNull String team1, @NonNull String team2) {
         this.name = name;
         this.place = place;
-        this.team = team;
+        this.team1 = team1;
+        this.team2 = team2;
     }
 }

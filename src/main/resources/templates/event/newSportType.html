@@ -3,10 +3,16 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
   <meta charset="UTF-8">
-  <title>New sportType</title>
+  <title>New Sport type</title>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+  <link th:href="@{/style/main.css}" rel="stylesheet" type="text/css"/>
 </head>
-<body>
-<h1>New sportType</h1>
+<body class="transition-background">
+<div class="container">
+  <header th:replace="~{partials/header}"></header>
+</div>
+<h1>Nauja sporto šaka</h1>
 <form class="input-form" action="#" th:action="@{/news/sportType/new}" th:object="${sportType}" method="post">
   <p>Title: <input type="text" th:field="*{name}" class="create-input"/></p>
   <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-color">Name error</div>
@@ -20,6 +26,8 @@
     <div>BACK</div>
   </a>
 </form>
-
+<div class="container my-5">
+  <footer th:replace="~{partials/footer}"></footer>
+</div>
 </body>
 </html>

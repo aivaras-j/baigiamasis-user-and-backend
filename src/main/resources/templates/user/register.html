@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <meta charset="UTF-8">
+  <title>Register form</title>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+  <link th:href="@{/style/main.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body class="transition-background">
+<div class="container">
+  <header th:replace="~{partials/header}"></header>
+</div>
+
+<section class="pb-4">
+  <div class="bg-yellow rounded-5">
+    <section class="w-100">
+
+      <div class="d-flex justify-content-center">
+        <div class="col-sm-4 text-black">
+          <div class="d-flex h-custom-2 px-5 ms-xl-4 mt-5 pt-xl-0 mt-xl-n5">
+
+            <form style="width: 23rem;" th:action="@{/register}" method="post">
+              <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register</h3>
+              <div class="form-outline mb-4">
+
+                <input type="text"  class="form-control form-control-lg" name="username">
+                <label class="form-label" style="margin-left: 0px;">Username</label>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+
+              <div class="form-outline mb-4">
+                <input type="password" class="form-control form-control-lg" name="password">
+                <label class="form-label" style="margin-left: 0px;">Password</label>
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div></div>
+              <div th:if="${param.error}" class="error">
+                Invalid username or password
+              </div>
+              <div>
+                <label>Role:</label>
+                <select name="role">
+                  <option value="USER">USER</option>
+                  <option value="ADMIN">ADMIN</option>
+                </select>
+              </div>
+
+              <div class="pt-1 mb-4">
+                <div><input type="submit" value="Register"></div>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+        <div class="col-sm-4 px-0 d-none d-sm-block">
+          <img src="https://media.istockphoto.com/id/637332860/photo/multi-sports-proud-players-collage-on-grand-arena.jpg?s=612x612&w=0&k=20&c=mb1qZHDluXcDAp2_hFVHidFbfvCQetRu8Dbs3jPv4mA=" alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+<div class="container my-5">
+  <footer th:replace="~{partials/footer}"></footer>
+</div>
+</body>
+</html>
